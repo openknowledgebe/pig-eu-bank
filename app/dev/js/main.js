@@ -17,7 +17,7 @@ $(document).ready(function()
 		makeMap();
     });
     
-    var lowest = 0;
+    var lowest = Infinity;
     var highest = 0;
     
     function parseData(countries) {
@@ -26,7 +26,10 @@ $(document).ready(function()
         
         Object.keys(countries).forEach(function(countryKey) {
 		    var country = countries[countryKey];
-            
+            if (country.eu === null) {
+				return;
+			}
+			
             if (country.eu < lowest) {
                 lowest = country.eu;
             } 
@@ -42,7 +45,7 @@ $(document).ready(function()
 			result.title = countryKey;
 			result.id = country.code;
 			result.color = assignColor(country.eu);
-			result.customData = country.eu;
+			result.customData = Math.round(country.eu);
 			
 			results.push(result);
 			
@@ -62,11 +65,8 @@ $(document).ready(function()
     }
     
     function componentToHex(c) {
-        var hex = c.toString(16);
-        console.log(c);
-        
+        var hex = c.toString(16);        
         return hex.length == 1 ? "0" + hex : hex;
-        
     }
     
 	function assignColor(value) {
@@ -116,17 +116,14 @@ $(document).ready(function()
 				left: 0,
 				horizontalGap: 10,
 				data: [{
-					title: "EU member before 2004",
-					color: "#67b7dc"
-				}, {
-						title: "Joined at 2004",
-						color: "#ebdb8b"
+						title: "At least " + Math.floor(lowest) + " funds invested per capita",
+						color: "#00FF00"
 					}, {
-						title: "Joined at 2007",
-						color: "#83c2ba"
+						title: "At least " + Math.floor((lowest + highest) / 2) + " funds invested per capita",
+						color: "#7F7F00"
 					}, {
-						title: "Joined at 2013",
-						color: "#db8383"
+						title: "At most " + Math.floor(highest) + " funds invested per capita",
+						color: "#FF0000"
 					}]
 			},
 			"export": {
