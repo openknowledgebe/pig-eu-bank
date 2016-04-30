@@ -1,1 +1,0 @@
-$(document).ready(function(){PIGEUBANK.data.init()}),PIGEUBANK.data={init:function(){var t=this;$.getJSON("../../data/result.json",function(n){t.data=n,PIGEUBANK.map.init()})}},PIGEUBANK.map={init:function(){}};
