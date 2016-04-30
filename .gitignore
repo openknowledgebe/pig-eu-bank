@@ -3,3 +3,4 @@ bower_components
 app/dev/public/vendor
 node_modules
 .idea
+app/dist
