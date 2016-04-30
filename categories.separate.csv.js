@@ -7,5 +7,5 @@ Object.keys(countries).forEach(function(key) {
 		var category = country.categories[key];
 		csv += "\n" + key.replace(/\n/g, "") + ", " + category.eu;
 	});
-	fs.writeFileSync('results/' + key + '.csv', csv);
+	fs.writeFileSync('results/countries/' + key + '.csv', csv);
 });
