@@ -1,5 +1,7 @@
 PIGEUBANK.map = {
     init: function() {
+        
+        /*
 
         var source = "file.json";
         $.getJSON(source, {
@@ -8,7 +10,7 @@ PIGEUBANK.map = {
         .done(function(data) {
             
   
-        });
+    });
 
         var map = AmCharts.makeChart("chartdiv", {
 
@@ -205,7 +207,7 @@ PIGEUBANK.map = {
                 "enabled": true
             }
 
-        });
+        }); */
 
     }
 };
