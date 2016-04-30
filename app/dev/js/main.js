@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
 
-    PIGEUBANK.map.init();
+    PIGEUBANK.data.init();
 
 });
