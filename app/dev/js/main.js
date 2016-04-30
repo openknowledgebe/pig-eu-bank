@@ -99,7 +99,7 @@ $(document).ready(function()
 				rollOverColor: "#CC0000",
 				alpha: 0.8,
 				unlistedAreasAlpha: 0.1,
-				balloonText: "[[title]] spends on average [[customData]] per capita."
+				balloonText: "[[title]] spends on average €[[customData]] per capita."
 			},
 
 
@@ -116,13 +116,13 @@ $(document).ready(function()
 				left: 0,
 				horizontalGap: 10,
 				data: [{
-						title: "At least " + Math.floor(lowest) + " funds invested per capita",
+						title: "At least €" + Math.floor(lowest) + " funding invested per capita",
 						color: "#00FF00"
 					}, {
-						title: "At least " + Math.floor((lowest + highest) / 2) + " funds invested per capita",
+						title: "At least €" + Math.floor((lowest + highest) / 2) + " funding invested per capita",
 						color: "#7F7F00"
 					}, {
-						title: "At most " + Math.floor(highest) + " funds invested per capita",
+						title: "At most €" + Math.floor(highest) + " funding invested per capita",
 						color: "#FF0000"
 					}]
 			},
