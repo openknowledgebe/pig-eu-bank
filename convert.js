@@ -8,13 +8,14 @@ fs.writeFileSync('result.json', JSON.stringify(result));
 function convert(obj) {
 	var countries = {};
 	obj.data.forEach(function(entry) {
+		var code = entry[8];
 		var country = entry[9];
 		var category = entry[16];
 		var eu = entry[20];
 		var nat = entry[21];
 		var total = entry[22];
 		if (!countries[country]) {
-			countries[country] = { categories : {}, eu : 0};
+			countries[country] = { code : code, categories : {}, eu : 0};
 		}
 		if (!countries[country].categories[category]) {
 			countries[country].categories[category] = { eu : 0, nat : 0, total : 0};
