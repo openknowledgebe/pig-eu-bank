@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "amcharts3": "amcharts/amcharts3",
+    "ammap3": "amcharts/ammap3"
+  }
+}
