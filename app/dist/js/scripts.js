@@ -1,0 +1,1 @@
+$(document).ready(function(){PIGEUBANK.map.init()}),PIGEUBANK.map={init:function(){}};

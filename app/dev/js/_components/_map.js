@@ -1,0 +1,5 @@
+PIGEUBANK.map = {
+  init: function() {
+
+  }
+};
