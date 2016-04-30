@@ -1,8 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "amcharts3": "amcharts/amcharts3",
-    "ammap3": "amcharts/ammap3"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
