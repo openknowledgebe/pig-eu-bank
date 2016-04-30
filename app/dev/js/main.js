@@ -8,20 +8,34 @@ $(document).ready(function()
    var map;
    
     $.getJSON(source, {
-        format: "json"
+        format: "json",
+        cache: false
     })
     .done(function(data) {
         countries = parseData(data);
-		console.log(countries);
+
 		makeMap();
     });
     
-    var lowest;
-    var highest;
+    var lowest = 0;
+    var highest = 0;
     
     function parseData(countries) {
 
 		var results = [];
+        
+        Object.keys(countries).forEach(function(countryKey) {
+		    var country = countries[countryKey];
+            
+            if (country.eu < lowest) {
+                lowest = country.eu;
+            } 
+            
+            if (country.eu > highest) {
+                highest = country.eu;
+            } 
+        });
+        
         Object.keys(countries).forEach(function(countryKey) {
 		    var country = countries[countryKey];
 			var result = {};
@@ -47,8 +61,23 @@ $(document).ready(function()
 		return results;
     }
     
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        console.log(c);
+        
+        return hex.length == 1 ? "0" + hex : hex;
+        
+    }
+    
 	function assignColor(value) {
-		return "#67b7dc"; //TODO
+        
+        var percent = value / highest  * 100;
+        
+        var r = Math.floor(255 * percent / 100);
+        var g = Math.floor(255 * (100 - percent) / 100);
+        var b = 0;
+        
+		return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 	}
 
 	function makeMap() {
@@ -70,7 +99,7 @@ $(document).ready(function()
 				rollOverColor: "#CC0000",
 				alpha: 0.8,
 				unlistedAreasAlpha: 0.1,
-				balloonText: "[[title]] joined EU at [[customData]]"
+				balloonText: "[[title]] spends on average [[customData]] per capita."
 			},
 
 
