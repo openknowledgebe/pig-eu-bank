@@ -13,7 +13,6 @@ $(document).ready(function()
     })
     .done(function(data) {
         countries = parseData(data);
-
 		makeMap();
     });
     
@@ -26,40 +25,21 @@ $(document).ready(function()
         
         Object.keys(countries).forEach(function(countryKey) {
 		    var country = countries[countryKey];
-            if (country.eu === null) {
+			if (country.eu === null) {
 				return;
 			}
-			
             if (country.eu < lowest) {
                 lowest = country.eu;
-            } 
-            
+            }
             if (country.eu > highest) {
                 highest = country.eu;
             } 
-        });
-        
-        Object.keys(countries).forEach(function(countryKey) {
-		    var country = countries[countryKey];
 			var result = {};
 			result.title = countryKey;
-			result.id = country.code;
+			result.id = country.code === "UK" ? "GB" : country.code; //AMCHARTS EXPECTS GB, NOT UK
 			result.color = assignColor(country.eu);
 			result.customData = Math.round(country.eu);
-			
 			results.push(result);
-			
-            // country
-            // country.eu = funding
-            // country.population = population
-            // country.code = countrycode
-            //console.log(country);
-            
-            
-            // Loop categories, can do later
-            //Object.keys(country).forEach(function(categoryKey) {
-            //    var cat = country[categoryKey];
-            //});
         });
 		return results;
     }
